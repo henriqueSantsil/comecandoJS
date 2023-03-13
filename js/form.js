@@ -8,7 +8,7 @@ botaoAdicionar.addEventListener('click', function (evento){
 
     let paciente = obtemPacienteDoForm(form)
 
-    console.log(paciente)
+    adicionaPacienteNaTabela(paciente)
 
     form.reset()
 })
@@ -25,9 +25,7 @@ function obtemPacienteDoForm(form){
     return paciente
 }
 
-function adicionaPacienteNaTabela(){
-    
-}
+
 
 function montarTr(paciente){
     //createElement cria um elemento de html
@@ -42,6 +40,12 @@ function montarTr(paciente){
     pacienteTr.appendChild(montarTd(paciente.imc, "info-imc"))
 
     return pacienteTr
+}
+
+function adicionaPacienteNaTabela(paciente){
+    let pacienteTr = montarTr(paciente)
+    let tabela = document.querySelector('#tabela-pacientes')
+    tabela.appendChild(pacienteTr)
 }
 
 function montarTd(dado, classe){
